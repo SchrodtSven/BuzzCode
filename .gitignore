@@ -5,3 +5,4 @@
 /storage/pail
 tmp/
 phpunit_ln
+composer.lock

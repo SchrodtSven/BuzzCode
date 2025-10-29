@@ -15,10 +15,13 @@ require_once 'src/Autoload.php';
 
 use SchrodtSven\BuzzCode\Sanitizer;
 use SchrodtSven\BuzzCode\Type\Str;
-
+use SchrodtSven\BuzzCode\Type\Lst;
 
 #var_dump(new Sanitizer('dta/BuzzwordsClassVarzMembers.txt'));
 
-$foo = new Str("Ha loo ll");
+$foo = new Str("Ha  loo ll");
 
-echo $foo->repl(" ", "__");
+var_dump($foo->spltBy(" "));
+
+
+//$bar ? 

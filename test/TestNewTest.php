@@ -2,27 +2,26 @@
 
 declare(strict_types=1);
 /**
- * Testing TestNew
+ * Testing Str
  * 
  * @see 
  * 
- * @author Sven Schrodt<sven@schrodt.club>
- * @link https://github.com/SchrodtSven/P8Three
- * @package P8Three
+ * @author Sven Schrodt<sven@schrodt.nrw>
+ * @link https://github.com/SchrodtSven/BuzzCode
+ * @package BuzzCode
  * @version 0.1
  * @since 2023-04-26
  */
 
 use PHPUnit\Framework\TestCase;
-use SchrodtSven\P8Three\New\TestNew;
+use SchrodtSven\BuzzCode\Type\Str;
 
 class TestNewTest extends TestCase
 {
     public function testBasix(): void
     {
-       $t = new TestNew();
-
-       $this->assertSame((string) $t->getContent(), 'Foo');
+       $str = new Str("Lorem ipsum");
+       $this->assertSame("lorem ipsum", $str->low()->raw());
     }   
 
 
