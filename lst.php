@@ -28,4 +28,6 @@ foreach($bar as $itm)
     printf("%s%s", $itm, PHP_EOL);
 
 print(count($bar));
+echo PHP_EOL;
+print_r($bar->tail(2));
 

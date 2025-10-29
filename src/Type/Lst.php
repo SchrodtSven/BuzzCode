@@ -42,7 +42,7 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
 
     public function tail(int $number=5)
     {
-        return $this->slice(count($this->cnt), $number*-1);
+        return $this->slice($number*-1, count($this->cnt)-$number );
     }
 
     public function __toString(): string

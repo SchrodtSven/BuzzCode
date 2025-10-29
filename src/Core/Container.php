@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 /**
- * Example Container Class, deemonstrating property hookz
+ * Example Container Class, demonstrating property hookz
  * 
  * @author Sven Schrodt<sven@schrodt.nrw>
  * @link https://github.com/SchrodtSven/BuzzCode
@@ -42,7 +42,7 @@ class Container
 
     public function __construct(private mixed $dta = null)
     {
-        $this->crtd = new DateTime();
+        $this->create();
     }
 
     public function touch(): self
@@ -56,6 +56,12 @@ class Container
          $this->crtd = new DateTime();
          // .... parse $this->dta
          $this->touch();
+    }
+
+    public function save() : self
+    {
+        // do persisting stuff
+        return $this->touch();
     }
 }
 
