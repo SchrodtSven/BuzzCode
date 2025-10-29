@@ -83,9 +83,9 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
     /**
      * 
      */
-    public function push(mixed $value): self
+    public function push(mixed $val): self
     {
-        array_push($this->cnt, $value);
+        array_push($this->cnt, $val);
         return $this;
     }
 
@@ -95,6 +95,15 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
     public function shift(): mixed
     {
         return array_shift($this->cnt);
+    }
+
+    /**
+     * Unshift an element to the beginning of array
+     */
+    public function unshift(mixed $val): self
+    {
+        array_unshift($this->cnt, $val);
+        return $this;
     }
 
     public function unique(int $flags = \SORT_STRING): static

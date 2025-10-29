@@ -17,13 +17,13 @@ trait AccTrait
 {
 
    
-    public function offsetSet($offset, $value): void
+    public function offsetSet($offset, $val): void
     {
 
         if (is_null($offset)) {
-            $this->dta[] = $value;
+            $this->dta[] = $val;
         } else {
-            $this->dta[$offset] = $value;
+            $this->dta[$offset] = $val;
         }
     }
 

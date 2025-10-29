@@ -15,13 +15,13 @@ namespace SchrodtSven\BuzzCode;
 
 class Factory
 {
-    public function getVarName(){}
+    public function getVarNm(){}
 
-    public function getClsName(){}
+    public function getClsNm(){}
 
     public function getMtaSyn(){} // Foo bar 
 
-    public function getFinName(){} // trait interface Supplier
+    public function getFinNm(){} // trait interface supplier provider 
 
 
 }
