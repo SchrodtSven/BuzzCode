@@ -15,12 +15,8 @@ require_once 'src/Autoload.php';
 
 use SchrodtSven\BuzzCode\Core\Config;
 use SchrodtSven\BuzzCode\Core\Namer;
+use SchrodtSven\BuzzCode\Type\Str;
 
-#$foo = parse_ini_file("tmp/cfg.ini", true);
+$foo = new Str('Lorem Ipsum jdshdu');
 
-#$foo = Config::fromIni("prv/cfg.ini");
-$nm = new Namer();
-//var_dump($foo->get('Namer'));
-
-
-var_dump($nm->rndClsNm());
+var_dump($foo->splt(5));

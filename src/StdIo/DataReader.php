@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Reading dat from files
+ * Reading data from files
  * 
  * @author Sven Schrodt<sven@schrodt.nrw>
  * @link https://github.com/SchrodtSven/BuzzCode

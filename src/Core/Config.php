@@ -37,7 +37,7 @@ class Config
     public function get(string $key=''): ?array
     {
         return ($key =='') 
-                ?($this->cfg)
+                ? $this->cfg
                 : $this->cfg[$key] ?? null;
     }
 }

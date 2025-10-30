@@ -12,11 +12,16 @@ declare(strict_types=1);
   */
 
 namespace SchrodtSven\BuzzCode\Type;
-use SchrodtSven\BuzzCode\Type\Lst;
+
 use Stringable;
+
+use SchrodtSven\BuzzCode\Type\Lst;
+use SchrodtSven\BuzzCode\Type\Dry\MbStrTrait;
 
 class Str implements Stringable
 {
+    use MbStrTrait;
+
     public function __construct(private string | Stringable $cnt) // Content holding member (attr))
     {
         if(!is_string($this->cnt)) {
@@ -94,8 +99,6 @@ class Str implements Stringable
     {
         return new Lst(explode($sep, $this->cnt));
     }
-
-    public function splt(){}
 
     public function begins(string $txt): bool
     {
