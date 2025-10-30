@@ -17,7 +17,7 @@ use SchrodtSven\BuzzCode\Sanitizer;
 use SchrodtSven\BuzzCode\Type\Str;
 use SchrodtSven\BuzzCode\Type\Lst;
 
-$foo = [23, 42 ,666 ,9, 8];
+$foo = [23, 42 ,666 ,9, 8, 34, 0x23 ,434, 1_000_001];
 
 $bar = new Lst($foo);
 $bar->sort();
@@ -29,5 +29,5 @@ foreach($bar as $itm)
 
 print(count($bar));
 echo PHP_EOL;
-print_r($bar->tail(2));
+print_r($bar->tail());
 

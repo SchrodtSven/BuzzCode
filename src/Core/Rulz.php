@@ -12,7 +12,7 @@ declare(strict_types=1);
  */
 
 
-namespace BuzzCode;
+namespace SchrodtSven\BuzzCode\Core;
 
 class Rulz
 {

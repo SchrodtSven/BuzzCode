@@ -16,12 +16,23 @@ require_once 'src/Autoload.php';
 use SchrodtSven\BuzzCode\Sanitizer;
 use SchrodtSven\BuzzCode\Type\Str;
 use SchrodtSven\BuzzCode\Type\Lst;
-
+use SchrodtSven\BuzzCode\Stdio\Apps\Dir;
 #var_dump(new Sanitizer('dta/BuzzwordsClassVarzMembers.txt'));
 
-$foo = new Str("Ha  loo ll");
+// $foo = new Str("Ha  loo ll");
 
-var_dump($foo->spltBy(" "));
+// var_dump($foo->spltBy(" "));
 
 
 //$bar ? 
+
+
+
+
+//echo implode(PHP_EOL, Dir::getRecByExt("src/"));
+
+
+echo implode(PHP_EOL, Dir::getRecByGen(pth:".",callback: function(object $itm) {
+  if($itm->getExtension() == "md")
+    return true;
+}));

@@ -19,7 +19,7 @@ use SchrodtSven\BuzzCode\Type\Dry\IterTrait;
 class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
 {
     private int $pos;
-    USE IterTrait;
+    use IterTrait;
     use AccTrait;
 
     /**
@@ -135,11 +135,24 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
     /**
      * Remove empty elements from list
      */
-    public function rmvEmpty($inpl = true) {}
+    public function rmvEmpty($inpl = true) 
+    {
+        
+    }
 
     public function join(string $glue) : Str
     {
         return new Str(implode($glue, $this->cnt));
+    }
+
+    public function lstKey(): mixed
+    {
+        return array_key_last($this->cnt);
+    }
+
+    public function fstKey(): mixed
+    {
+        return array_key_first($this->cnt);
     }
 
 }

@@ -8,3 +8,7 @@ Used abbreviations (in attribute/method names)
 - dry: Don't repeat yourself
 - rmv: remove
 - splt: split
+- itr:iterator
+- flz: files
+- itm: item
+- dir: directory
