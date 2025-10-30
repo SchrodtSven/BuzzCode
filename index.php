@@ -13,20 +13,14 @@ declare(strict_types=1);
 
 require_once 'src/Autoload.php';
 
-use SchrodtSven\BuzzCode\Sanitizer;
-use SchrodtSven\BuzzCode\Type\Str;
-use SchrodtSven\BuzzCode\Type\Lst;
-use SchrodtSven\BuzzCode\Stdio\Apps\Dir;
-use SchrodtSven\BuzzCode\Stdio\DataReader;
+use SchrodtSven\BuzzCode\Core\Config;
 use SchrodtSven\BuzzCode\Core\Namer;
-use SchrodtSven\BuzzCode\Patterns\Impl\SingletonCase;
 
-//$r = new DataReader('dta/names/starter.txt');
+#$foo = parse_ini_file("tmp/cfg.ini", true);
 
-$foo = SingletonCase::getInstance();
-$bar = SingletonCase::getInstance();
+#$foo = Config::fromIni("prv/cfg.ini");
+$nm = new Namer();
+//var_dump($foo->get('Namer'));
 
-var_dump($foo === $bar);
-//$baz = clone $bar;
 
-$baz = new SingletonCase();
+var_dump($nm->rndClsNm());

@@ -17,10 +17,12 @@ namespace SchrodtSven\BuzzCode\Core;
 
 use ErrorException;
 use OutOfBoundsException;
-USE OutOfRangeException;
+use OutOfRangeException;
 use Random\Randomizer;
+
 use SchrodtSven\BuzzCode\Stdio\DataReader;
 use SchrodtSven\BuzzCode\Type\Lst;
+use SchrodtSven\BuzzCode\Core\Config;
 
 class Namer
 {
@@ -29,6 +31,8 @@ class Namer
     protected static int $cntr = 0;
     protected array $actLst = [];
     protected string $actListNm = '';
+
+    const CFG_FILE = 'prv/cfg.ini';
 
     public function __construct()
     {
@@ -39,11 +43,11 @@ class Namer
     public function init(): void
     {
         // @FIXME: config.ini && parser!!!
-        $this->dta['nounz'] = $this->read('dta/names/nouns.txt');
-        $this->dta['fillerz'] = $this->read('dta/names/fillerz.txt');
-        $this->dta['adjectives'] = $this->read('dta/names/if_sfx.txt');
-        $this->dta['starterz'] = $this->read('dta/names/starter.txt');
-        $this->dta['finisherz'] = $this->read('dta/names/finisher_nm.txt');
+        $tmp = Config::fromIni(self::CFG_FILE);
+        foreach ($tmp->get('Namer') as $k => $v) {
+            $this->dta[$k] = $this->read($v);
+        }
+
     }
 
     /**
@@ -119,7 +123,7 @@ class Namer
     }
 
     /**
-     * Getting random buzzword glueing class name
+     * Getting random buzzword glueing interface name
      *
      * @param integer $wrdz
      * @return string
