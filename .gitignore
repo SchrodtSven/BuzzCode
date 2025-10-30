@@ -6,3 +6,4 @@ vendor/
 tmp/
 phpunit_ln
 composer.lock
+grube.*

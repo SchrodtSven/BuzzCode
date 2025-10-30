@@ -16,7 +16,7 @@ use Error;
 
 class Sanitizer
 {
-    private array $dta;
+    private array $cnt;
     public array $prsd;
 
     
@@ -26,14 +26,14 @@ class Sanitizer
         if(!file_exists($fn)) {
             throw new Error(sprintf("File %s not found", $fn));
         }
-        $this->dta = explode(PHP_EOL, file_get_contents($fn));
+        $this->cnt = explode(PHP_EOL, file_get_contents($fn));
         $this->preParse();
     }
 
     private function preParse()
     {
 
-        foreach($this->dta as $row) {
+        foreach($this->cnt as $row) {
             $itm = trim($row);
             if($itm !="" && !str_starts_with($itm, ";")) {
                 $this->prsd[] = strtolower($itm);

@@ -1,0 +1,14 @@
+Interface
+Factory
+Trait
+Bean
+Pear
+Banana
+Apple
+Pineapple
+Orange
+State
+Machine
+StateMachine
+Quoll
+Spaghetti

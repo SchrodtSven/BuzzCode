@@ -96,5 +96,20 @@ class Str implements Stringable
     }
 
     public function splt(){}
+
+    public function begins(string $txt): bool
+    {
+        return str_starts_with($this->cnt, $txt);
+    }
+
+    public function ends(string $txt): bool
+    {
+        return str_ends_with($this->cnt, $txt);
+    }
+
+    public function contains(string $txt): bool
+    {
+        return str_contains($this->cnt, $txt);
+    }
 }
 

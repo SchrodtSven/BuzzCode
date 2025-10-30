@@ -21,20 +21,20 @@ trait AccTrait
     {
 
         if (is_null($offset)) {
-            $this->dta[] = $val;
+            $this->cnt[] = $val;
         } else {
-            $this->dta[$offset] = $val;
+            $this->cnt[$offset] = $val;
         }
     }
 
     public function offsetExists($offset): bool
     {
-        return isset($this->dta[$offset]);
+        return isset($this->cnt[$offset]);
     }
 
     public function offsetUnset($offset): void
     {
-        unset($this->dta[$offset]);
+        unset($this->cnt[$offset]);
     }
 
     /**
@@ -43,6 +43,6 @@ trait AccTrait
      */
     public function offsetGet($offset): mixed
     {
-        return isset($this->dta[$offset]) ? $this->dta[$offset] : null;
+        return isset($this->cnt[$offset]) ? $this->cnt[$offset] : null;
     }
 }

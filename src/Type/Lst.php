@@ -50,7 +50,7 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
         return var_export($this->cnt, true);
     }
 
-    public function __construct(private array  $cnt) // Content holding member (attr))
+    public function __construct(private array  $cnt = []) // Content holding member (attr))
     {
 
     }

@@ -17,22 +17,16 @@ use SchrodtSven\BuzzCode\Sanitizer;
 use SchrodtSven\BuzzCode\Type\Str;
 use SchrodtSven\BuzzCode\Type\Lst;
 use SchrodtSven\BuzzCode\Stdio\Apps\Dir;
-#var_dump(new Sanitizer('dta/BuzzwordsClassVarzMembers.txt'));
+use SchrodtSven\BuzzCode\Stdio\DataReader;
+use SchrodtSven\BuzzCode\Core\Namer;
+use SchrodtSven\BuzzCode\Patterns\Impl\SingletonCase;
 
-// $foo = new Str("Ha  loo ll");
+//$r = new DataReader('dta/names/starter.txt');
 
-// var_dump($foo->spltBy(" "));
+$foo = SingletonCase::getInstance();
+$bar = SingletonCase::getInstance();
 
+var_dump($foo === $bar);
+//$baz = clone $bar;
 
-//$bar ? 
-
-
-
-
-//echo implode(PHP_EOL, Dir::getRecByExt("src/"));
-
-
-echo implode(PHP_EOL, Dir::getRecByGen(pth:".",callback: function(object $itm) {
-  if($itm->getExtension() == "md")
-    return true;
-}));
+$baz = new SingletonCase();

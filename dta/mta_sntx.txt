@@ -58,10 +58,6 @@ tutu
 zxc
 spqr
 wombat
-End names
-fill wordz
-Metasyntactix
-Abstract
 Acme
 Alice
 Bar
@@ -90,13 +86,15 @@ Pack
 Pear
 Pearl
 Placeholder 
-Preferred metasyntactic variables include blurgle
+blurgle
 eek
 ook
 frodo
-and bilbo; wibble
+bilbo
+wibble
 wobble
-and in emergencies wubble; flob
+wubble
+flob
 banana
 tom
 dick
@@ -135,10 +133,6 @@ fjord
 for 
 fubar
 jargon
-html
-M
-metasyntactic-variable.html
-i
 ipsum
 j
 jigs 
@@ -149,7 +143,6 @@ jump
 jumping 
 liquor 
 love 
-metasyntactic variable
 my 
 naming
 nymph 
@@ -161,7 +154,6 @@ quiz
 sphinx 
 to 
 vex 
-vex! 
 vow 
 waltz 
 with 

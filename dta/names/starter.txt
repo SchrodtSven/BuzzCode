@@ -1,0 +1,9 @@
+Abstract
+Base
+Classified
+Deprecated
+Eternal
+Final
+Goofy
+Heuristic
+Deterministic

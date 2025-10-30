@@ -12,3 +12,4 @@ Used abbreviations (in attribute/method names)
 - flz: files
 - itm: item
 - dir: directory
+- sbj: subject
