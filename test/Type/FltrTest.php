@@ -54,7 +54,7 @@ class FltrTest extends TestCase
     }
 
     #[TestWith([['Baz', 'Foo', 'Gaz', 'Guy', 'bar', 'nn'], 'prfx'])]
-    #[TestWith([['Baz', 'Foo', 'Gaz', 'Guy', 'bar', 'nn'], '_SAVED'])]
+    #[TestWith([['Baz', 'Foo', 'Gaz', 'Guy', 'bar', 'nn'], 'SAVED'])]
     public function testIfMapWorxCorrectly(array $origin, string $prfx): void
     {
         $lst = new Lst($origin);

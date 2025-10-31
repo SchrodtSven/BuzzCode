@@ -154,6 +154,7 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
     public function rmvEmpty(bool $inpl = true, bool $reorder = true): self
     {
         $wasLst = array_is_list($this->cnt);
+        
         array_walk($this->cnt, function (&$itm, $key) {
             if (empty($itm))
                 unset($this->cnt[$key]);

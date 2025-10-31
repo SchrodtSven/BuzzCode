@@ -98,35 +98,30 @@ trait MbStrTrait
         public function internalEncoding(?string $encoding = null): string|bool
         {
             return mb_internal_encoding($encoding);
-            
         }
         
 
         public function httpInput(?string $type = null): array|string|false
         {
             return mb_http_input($type);
-            
         }
         
 
         public function httpOutput(?string $encoding = null): string|bool
         {
             return mb_http_output($encoding);
-            
         }
         
 
         public function detectOrder(array|string|null $encoding = null): array|bool
         {
             return mb_detect_order($encoding);
-            
         }
         
 
         public function substituteCharacter(string|int|null $substituteCharacter = null): string|int|bool
         {
             return mb_substitute_character($substituteCharacter);
-            
         }
         
         /**
@@ -160,7 +155,6 @@ trait MbStrTrait
         public function len(string $string, ?string $encoding = null): int
         {
             return mb_strlen($this->cnt, $encoding);
-            
         }
         
         /**
@@ -174,63 +168,54 @@ trait MbStrTrait
         public function pos(string $needle, int $offset = 0, ?string $encoding = null): int|false
         {
             return mb_strpos($needle, $this->cnt, $offset, $encoding);
-            
         }
         
 
         public function strrpos(string $haystack, string $needle, int $offset = 0, ?string $encoding = null): int|false
         {
             return mb_strrpos($haystack, $needle, $offset , $encoding);
-            
         }
         
 
         public function stripos(string $haystack, string $needle, int $offset = 0, ?string $encoding = null): int|false
         {
             return mb_stripos($haystack, $needle, $offset, $encoding);
-            
         }
         
 
         public function strripos(string $haystack, string $needle, int $offset = 0, ?string $encoding = null): int|false
         {
             return mb_strripos($haystack, $needle, $offset, $encoding);
-            
         }
         
 
         public function strstr($haystack,  $needle, $beforeNeedle, $encoding): string|false
         {
             return mb_strstr($haystack,  $needle, $beforeNeedle, $encoding);
-            
         }
         
 
         public function strrchr($haystack,  $needle, $beforeNeedle, $encoding): string|false
         {
             return mb_strrchr($haystack,  $needle, $beforeNeedle, $encoding);
-            
         }
         
 
         public function stristr($haystack,  $needle, $beforeNeedle, $encoding): string|false
         {
             return mb_stristr($haystack,  $needle, $beforeNeedle, $encoding);
-            
         }
         
 
         public function strrichr($haystack,  $needle, $beforeNeedle, $encoding): string|false
         {
             return mb_strrichr($haystack,  $needle, $beforeNeedle, $encoding);
-            
         }
         
 
         public function substrCount(string $needle, ?string $encoding = null): int
         {
             return mb_substr_count($this->cnt, $needle, $encoding);
-            
         }
         
 
@@ -243,14 +228,12 @@ trait MbStrTrait
         public function cut(int $start, ?int $length, ?string $encoding = null): self
         {
             return new self(mb_strcut($this->cnt, $start, $length, $encoding));
-    
         }
         
 
         public function width(string $string, ?string $encoding = null): int
         {
             return mb_strwidth($this->cnt, $encoding);
-            
         }
         
 
@@ -271,21 +254,18 @@ trait MbStrTrait
         public function detect_encoding(array|string|null $encodings = null, bool $strict = false): string|false
         {
             return mb_detect_encoding($this->cnt,$encodings, $strict);
-            
         }
         
 
         public function listEncodings(): array
         {
             return mb_list_encodings();
-            
         }
         
 
         public function encodingAliases(string $encoding): Lst
         {
             return new Lst(mb_encoding_aliases($encoding));
-            
         }
         
 
@@ -313,7 +293,6 @@ trait MbStrTrait
         public function convertVariables(string $toEncoding, array|string $fromEncoding, mixed &...$vars): string|false
         {
             return mb_convert_variables($toEncoding, $fromEncoding, ...$vars);
-            
         }
         
 
@@ -325,15 +304,13 @@ trait MbStrTrait
       
         public function getInfo(string $type = 'all'): array|string|int|false
         {
-            return mb_get_info($type = 'all');
-            
+            return mb_get_info($type);
         }
         
 
         public function check_encoding(array|string|null $value = null, ?string $encoding = null): bool
         {
             return mb_check_encoding($value, $encoding);
-            
         }
         
 
@@ -361,7 +338,6 @@ trait MbStrTrait
         public function regexi(string $pattern, &$matches): bool
         {
             return mb_eregi($pattern, $this->cnt, $matches);
-            
         }
         
 
@@ -375,21 +351,18 @@ trait MbStrTrait
         public function regexReplaceCallback(string $pattern, callable $callback, string $string, ?string $options = null): string|false|null
         {
             return mb_ereg_replace_callback($pattern,$callback, $this->cnt, $options);
-            
         }
         
 
         public function regexiReplace(string $pattern, $replacement, string $string, ?string $options = null): string|false|null
         {
             return mb_eregi_replace($pattern, $replacement, $this->cnt, $options);
-            
         }
         
 
         public function splt(int $limit = -1): array|false
         {
             return mb_str_split($this->cnt, $limit);
-            
         }
         
 
@@ -403,43 +376,34 @@ trait MbStrTrait
         public function regexSearch(?string $pattern, ?string $options = null): bool
         {
             return mb_ereg_search($pattern, $options);
-            
         }
         
 
         public function regexSearchPos(?string $pattern, ?string $options = null): array|false
         {
             return mb_ereg_search_pos($pattern, $options);
-            
         }
         
 
         public function regexSearchRegs(?string $pattern, ?string $options = null): array|false
         {
             return mb_ereg_search_regs($pattern, $options);
-            
         }
         
 
         public function regexSearchInit(?string $pattern, ?string $options = null): bool
         {
             return mb_ereg_search_init($this->cnt, $pattern, $options);
-            
         }
         
 
         public function regexSearchGetregs(): array|false
         {
             return mb_ereg_search_getregs();
-            
         }
         
-
-    
-
         public function regexSearchSetpos(int $offset): bool
         {
             return mb_ereg_search_setpos($offset);
-            
         }
 }
