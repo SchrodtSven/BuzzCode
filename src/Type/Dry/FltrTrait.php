@@ -14,12 +14,12 @@ declare(strict_types=1);
 namespace SchrodtSven\BuzzCode\Type\Dry;
 use SchrodtSven\BuzzCode\Type\Lst;
 
-trait FilterTrait
+trait FltrTrait
 {
 
     public function genFltr(callable $callback, $mode = \ARRAY_FILTER_USE_BOTH ): ?static
     {
-        new static(array_filter($this->cnt, $callback, $mode));
+        return new static(array_filter($this->cnt, $callback, $mode));
     }
     
 }

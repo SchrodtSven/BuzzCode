@@ -15,14 +15,14 @@ namespace SchrodtSven\BuzzCode\Type;
 
 use SchrodtSven\BuzzCode\Type\Dry\AccTrait;
 use SchrodtSven\BuzzCode\Type\Dry\IterTrait;
-use SchrodtSven\BuzzCode\Type\Dry\FilterTrait;
+use SchrodtSven\BuzzCode\Type\Dry\FltrTrait;
 
 class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
 {
     private int $pos;
     use IterTrait;
     use AccTrait;
-    use FilterTrait;
+    use FltrTrait;
 
     public function __construct(private array  $cnt = []) // Content holding member (attr))
     {}
@@ -55,9 +55,16 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
         return $this->slice($number * -1, count($this->cnt) - $number);
     }
 
-    public function find(callable  $callback): self
+    /**
+     *  Returns **the first** element satisfying a callback function
+     *
+     * @param callable $callback
+     * @return array
+     */
+    public function find(callable  $callback): mixed
     {
-        return new static(array_find($this->cnt, $callback));
+        //return new static(array_find($this->cnt, $callback));
+        return array_find($this->cnt, $callback);
     }
 
 
@@ -180,7 +187,7 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
 
     public function walk(callable $callback): self
     {
-        array_walk($callback, $this->cnt);
+        array_walk($this->cnt, $callback);
         return $this;
     }
 }

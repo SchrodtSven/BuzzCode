@@ -45,4 +45,14 @@ class LstTest extends TestCase
         $this->assertTrue(count($lst) == $count);
         
     }    
+
+     #[TestWith([['Baz', 'Foo', 'Lorem Ipsum', 'Gaz Guy', null, 'baro', 'nn'], 6])]
+     public function testFind(array $origin, $cnt): void
+     {
+         $lst = new Lst($origin);
+         $tmp = $lst->find(function($itm) {
+            return strlen($itm) > 4;
+
+         });
+     }
 }
