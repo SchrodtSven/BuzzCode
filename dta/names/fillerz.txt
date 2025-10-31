@@ -94,7 +94,6 @@ pippo
 pippo
 placeholder
 pluto
-provider
 proxy
 quartz
 quick

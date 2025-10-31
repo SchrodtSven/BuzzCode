@@ -16,7 +16,19 @@ require_once 'src/Autoload.php';
 use SchrodtSven\BuzzCode\Core\Config;
 use SchrodtSven\BuzzCode\Core\Namer;
 use SchrodtSven\BuzzCode\Type\Str;
+use SchrodtSven\BuzzCode\Type\Lst;
 
 $foo = new Str('Lorem Ipsum jdshdu');
 
-var_dump($foo->splt(5));
+
+$nm = new Namer();
+$lst = new Lst([]);
+ for ($i = 0; $i < 15; $i++) {
+            echo $nm->rndClsNm(8) . PHP_EOL;
+            //echo $nm->rndIfNm(8) . PHP_EOL;
+        }
+
+
+$tmp = Config::fromIni('dta/vars.ini');
+
+var_dump($tmp->get('varz'));

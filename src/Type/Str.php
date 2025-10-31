@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @package BuzzCode
  * @version 0.0.1
  * @since 2025-10-29
-  */
+ */
 
 namespace SchrodtSven\BuzzCode\Type;
 
@@ -22,17 +22,17 @@ class Str implements Stringable
 {
     use MbStrTrait;
 
-    public function __construct(private string | Stringable $cnt) // Content holding member (attr))
+    public function __construct(private string|Stringable $cnt) // Content holding member (attr))
     {
-        if(!is_string($this->cnt)) {
+        if (!is_string($this->cnt)) {
             $this->cnt = (string) $cnt;
         }
     }
 
-    public function repl(array|string $s, array|string $r, $inpl=true) : self
+    public function repl(array|string $s, array|string $r, $inpl = true): self
     {
         $tmp = str_replace($s, $r, $this->cnt);
-        if($inpl) {
+        if ($inpl) {
             $this->cnt = $tmp;
             return $this;
         } else {
@@ -52,7 +52,7 @@ class Str implements Stringable
     /**
      * Lower case string
      */
-    public function low($inpl=true): self
+    public function low($inpl = true): self
     {
         return $this->generic("strtolower", $inpl);
     }
@@ -60,7 +60,7 @@ class Str implements Stringable
     /**
      * Upper case string
      */
-    public function up($inpl=true): self
+    public function up($inpl = true): self
     {
         return $this->generic("strtoupper", $inpl);
     }
@@ -68,7 +68,7 @@ class Str implements Stringable
     /**
      * Upper case first character string
      */
-    public function ucf($inpl=true): self
+    public function ucf($inpl = true): self
     {
         return $this->generic("ucfirst", $inpl);
     }
@@ -76,7 +76,7 @@ class Str implements Stringable
     /**
      * Lower case first character string
      */
-    public function lcf($inpl=true): self
+    public function lcf($inpl = true): self
     {
         return $this->generic("lcfirst", $inpl);
     }
@@ -84,19 +84,20 @@ class Str implements Stringable
     /**
      * Generic function applying callable
      */
-    public function generic(callable $callback, $inpl=true): self
+    public function generic(callable $callback, $inpl = true): self
     {
         $tmp = $callback($this->cnt);
         if ($inpl) {
             $this->cnt = $tmp;
             return $this;
         } else {
-             return new self($tmp);
+            return new self($tmp);
         }
     }
 
     public function spltBy(Stringable|string $sep): Lst
     {
+        $sep = (is_string($sep)) ? $sep : (string) $sep;
         return new Lst(explode($sep, $this->cnt));
     }
 
@@ -114,5 +115,9 @@ class Str implements Stringable
     {
         return str_contains($this->cnt, $txt);
     }
-}
 
+    public function clone(): self
+    {
+        return new self($this->cnt);
+    }
+}

@@ -9,40 +9,42 @@ declare(strict_types=1);
  * @package BuzzCode
  * @version 0.0.1
  * @since 2025-10-29
-  */
+ */
 
 namespace SchrodtSven\BuzzCode\Type;
 
 use SchrodtSven\BuzzCode\Type\Dry\AccTrait;
 use SchrodtSven\BuzzCode\Type\Dry\IterTrait;
+use SchrodtSven\BuzzCode\Type\Dry\FilterTrait;
 
 class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
 {
     private int $pos;
     use IterTrait;
     use AccTrait;
+    use FilterTrait;
 
     /**
      * @FIXME implement support for $step param
      *
      * @param integer $offset
      * @param integer $length
-     * @param integer $step
-     * @return void
+     * @param integer $step 
+     * @return self
      */
-    public function slice(int $offset, int $length, int $step=1)
+    public function slice(int $offset, int $length, int $step = 1): self
     {
-        return array_slice($this->cnt, $offset, $length);
+        return new static(array_slice($this->cnt, $offset, $length));
     }
 
-    public function head(int $number=5)
+    public function head(int $number = 5)
     {
         return $this->slice(0, $number);
     }
 
-    public function tail(int $number=5)
+    public function tail(int $number = 5)
     {
-        return $this->slice($number*-1, count($this->cnt)-$number );
+        return $this->slice($number * -1, count($this->cnt) - $number);
     }
 
     public function __toString(): string
@@ -51,11 +53,14 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
     }
 
     public function __construct(private array  $cnt = []) // Content holding member (attr))
-    {
+    {}
 
+    public function find(callable  $callback): self
+    {
+        return new static(array_find($this->cnt, $callback));
     }
 
-    
+
     public function raw(): array
     {
         return $this->cnt;
@@ -106,9 +111,9 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
         return $this;
     }
 
-    public function unique(int $flags = \SORT_STRING): static
+    public function uniq(int $flags = \SORT_STRING): static
     {
-        return new static (array_unique($this->cnt, $flags));
+        return new static(array_unique($this->cnt, $flags));
     }
 
     public function sum(): int|float
@@ -127,7 +132,7 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
      */
     public function sorted(): static
     {
-        $tmp = $this->raw();
+        $tmp = $this->cnt;
         sort($tmp);
         return new static($tmp);
     }
@@ -135,12 +140,21 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
     /**
      * Remove empty elements from list
      */
-    public function rmvEmpty($inpl = true) 
+    public function rmvEmpty(bool $inpl = true, bool $reorder = true): self
     {
-        
+        $wasLst = array_is_list($this->cnt);
+        array_walk($this->cnt, function (&$itm, $key) {
+            if (empty($itm))
+                unset($this->cnt[$key]);
+        });
+
+        if ($wasLst && $reorder) {
+            $this->cnt = array_values($this->cnt);
+        }
+        return $this;
     }
 
-    public function join(string $glue) : Str
+    public function join(string $glue): Str
     {
         return new Str(implode($glue, $this->cnt));
     }
@@ -155,5 +169,14 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
         return array_key_first($this->cnt);
     }
 
-}
+    public function map(callable $callback): self
+    {
+        return new self(array_map($callback, $this->cnt));
+    }
 
+    public function walk(callable $callback): self
+    {
+        array_walk($callback, $this->cnt);
+        return $this;
+    }
+}

@@ -9,6 +9,8 @@ declare(strict_types=1);
  * @package BuzzCode
  * @version 0.1
  * @since 2025-10-30
+ * 
+ * @FIXME -> remove uneeded methods
  */
 
 
@@ -155,7 +157,7 @@ trait MbStrTrait
         }
         
 
-        public function strlen(string $string, ?string $encoding): int
+        public function len(string $string, ?string $encoding = null): int
         {
             return mb_strlen($this->cnt, $encoding);
             

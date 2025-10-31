@@ -34,4 +34,15 @@ class LstTest extends TestCase
         $lst[] = 'Foo' . (string) $r->nextFloat();
         $this->assertTrue(count($lst) == $count +1);
     }    
+
+    #[TestWith([['Baz', 'Foo', '', 'Gaz', 'Guy', null, 'bar', 'nn'], 6])]
+    #[TestWith([[23, 42, 3.145, null], 3])]
+    #[TestWith([[99, 88, "", "fred", "barney", null, "Alice"], 5])]
+    public function testIfRmvWorxCorrectly(array $origin, int $count): void
+    {   
+        $lst = new Lst($origin);
+        $lst->rmvEmpty();
+        $this->assertTrue(count($lst) == $count);
+        
+    }    
 }

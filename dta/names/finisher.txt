@@ -12,3 +12,7 @@ Machine
 StateMachine
 Quoll
 Spaghetti
+Builder
+Provider
+Supplier
+Runner

@@ -1,9 +1,12 @@
 Abstract
-Base
-Classified
+Strict
 Deprecated
 Eternal
 Final
+Blasting
 Goofy
 Heuristic
 Deterministic
+Folding
+Base
+Classified

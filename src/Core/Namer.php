@@ -56,7 +56,7 @@ class Namer
     public function get(string $sbj = 'fillerz', bool $shuf = true): array
     {
         if (!array_key_exists($sbj, $this->dta)) {
-            throw new ErrorException("Non-existing key ({$sbj})!");
+            throw new OutOfBoundsException("Non-existing key ({$sbj})!");
         }
         $tmp = $this->dta[$sbj];
         return ($shuf) ? $this->rnd->shuffleArray($tmp) : $tmp;
@@ -91,7 +91,7 @@ class Namer
     public function drop(): string
     {
         if (count($this->actLst) == 0) {
-            throw new ErrorException("Empty working list - use Namer::actLst()!");
+            throw new OutOfBoundsException("Empty working list - use Namer::actLst()! - or try smaller buzzword chains next time!");
         }
         if (static::$cntr % 2 == 0) {
             $s = array_pop($this->actLst);
@@ -130,7 +130,7 @@ class Namer
      */
     public function rndIfNm(int $wrdz = 6) : string
     {
-        return $this->genNm(wrdz: $wrdz, last: 'adjectives');
+        return $this->genNm(wrdz: $wrdz, last: 'adjectivez');
     }
 
     /**
