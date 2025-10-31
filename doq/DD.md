@@ -13,3 +13,4 @@ Used abbreviations (in attribute/method names)
 - itm: item
 - dir: directory
 - sbj: subject
+- fltr: Filter

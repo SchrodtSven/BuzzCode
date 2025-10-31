@@ -24,6 +24,14 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
     use AccTrait;
     use FilterTrait;
 
+    public function __construct(private array  $cnt = []) // Content holding member (attr))
+    {}
+
+    public function __toString(): string
+    {
+        return var_export($this->cnt, true);
+    }
+
     /**
      * @FIXME implement support for $step param
      *
@@ -46,14 +54,6 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
     {
         return $this->slice($number * -1, count($this->cnt) - $number);
     }
-
-    public function __toString(): string
-    {
-        return var_export($this->cnt, true);
-    }
-
-    public function __construct(private array  $cnt = []) // Content holding member (attr))
-    {}
 
     public function find(callable  $callback): self
     {
@@ -139,6 +139,10 @@ class Lst implements \Countable, \Iterator, \ArrayAccess, \Stringable
 
     /**
      * Remove empty elements from list
+     *
+     * @param boolean $inpl
+     * @param boolean $reorder
+     * @return self
      */
     public function rmvEmpty(bool $inpl = true, bool $reorder = true): self
     {

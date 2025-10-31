@@ -17,7 +17,7 @@ use SchrodtSven\BuzzCode\Type\Lst;
 trait FilterTrait
 {
 
-    public function generic(callable $callback, $mode = \ARRAY_FILTER_USE_BOTH ): ?static
+    public function genFltr(callable $callback, $mode = \ARRAY_FILTER_USE_BOTH ): ?static
     {
         new static(array_filter($this->cnt, $callback, $mode));
     }
