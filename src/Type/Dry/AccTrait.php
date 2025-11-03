@@ -17,31 +17,31 @@ trait AccTrait
 {
 
    
-    public function offsetSet($offset, $val): void
+    public function offsetSet(mixed $offset, mixed $val): void
     {
 
         if (is_null($offset)) {
             $this->cnt[] = $val;
         } else {
-            $this->cnt[$offset] = $val;
+            $this->cnt[$offset] =  $val;
         }
     }
 
-    public function offsetExists($offset): bool
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->cnt[$offset]);
     }
 
-    public function offsetUnset($offset): void
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->cnt[$offset]);
     }
 
     /**
-     * @param [type] $offset
+     * @param [type] mixed $offset
      * @return mixed
      */
-    public function offsetGet($offset): mixed
+    public function offsetGet(mixed $offset): mixed
     {
         return isset($this->cnt[$offset]) ? $this->cnt[$offset] : null;
     }
