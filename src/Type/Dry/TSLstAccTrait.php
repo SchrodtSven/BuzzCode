@@ -17,7 +17,7 @@ trait TSLstAccTrait
 {
 
    
-    public function checkOffsetSet(mixed $offset, mixed $val): void
+    public function checkOffsetSet(int $offset, mixed $val): void
     {
 
         if (is_null($offset)) {
@@ -27,21 +27,21 @@ trait TSLstAccTrait
         }
     }
 
-    public function checkOffsetExists(mixed $offset): bool
+    public function checkOffsetExists(int $offset): bool
     {
         return isset($this->cnt[$offset]);
     }
 
-    public function checkOffsetUnset(mixed $offset): void
+    public function checkOffsetUnset(int $offset): void
     {
         unset($this->cnt[$offset]);
     }
 
     /**
-     * @param [type] mixed $offset
+     * @param [type] int $offset
      * @return mixed
      */
-    public function checkOffsetGet(mixed $offset): mixed
+    public function checkOffsetGet(int $offset): mixed
     {
         return isset($this->cnt[$offset]) ? $this->cnt[$offset] : null;
     }

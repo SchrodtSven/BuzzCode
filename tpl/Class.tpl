@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 /**
- * Info
+ * {{info}}
  * 
  */
 
- class %s
+ class {{cn}}
  {
     
  }
