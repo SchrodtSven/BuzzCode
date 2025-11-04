@@ -7,3 +7,4 @@ tmp/
 phpunit_ln
 composer.lock
 grube.*
+incub/

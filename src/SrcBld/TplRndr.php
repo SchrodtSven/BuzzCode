@@ -13,9 +13,11 @@ declare(strict_types=1);
 
 
 namespace SchrodtSven\BuzzCode\SrcBld;
-
+use SchrodtSven\BuzzCode\Core\Dry\ErrorTrait;
 class TplRndr
 {
+    use ErrorTrait;
+
     protected const string PLC_HLD = "{{%s}}";
 
     protected array $varz;
@@ -24,15 +26,22 @@ class TplRndr
 
     public function __construct(protected string $fn)
     {
-        $this->tpl = file_get_contents($fn);
+        $this->load($fn);
     }
 
-    public function __set($nm, $val)
+    public function load(string $fn)
+    {
+        $this->fileExist($fn);
+        $this->fn = $fn;
+        $this->tpl = file_get_contents($fn);    
+    }
+
+    public function __set(mixed $nm, $val)
     {
         $this->varz[$nm] = $val;
     }
 
-    public function __get($nm)
+    public function __get($nm): mixed
     {
         return $this->varz[$nm] ?? null;
     }
@@ -45,13 +54,18 @@ class TplRndr
                 $itm,
                 $this->tpl
             );
-
         }
-        //@FIXME remove every {{*}} stuff left!
+        //removing every {{*}} stuff left!
+        $this->tpl = preg_replace(
+            "/\{\{([a-zA-Z0-9_]+)\}\}/",
+            "",
+            $this->tpl
+        );
+
         return $this->tpl;
     }
 
-    public function __toString(): string 
+    public function __toString(): string
     {
         return $this->rndr();
     }

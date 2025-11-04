@@ -13,11 +13,40 @@ declare(strict_types=1);
 
 namespace SchrodtSven\BuzzCode\Core;
 
+
 class CodeBuilder
 {
-    const string ASSIGN = "%s%s = %s;"; // {TAB}{VARNAME} = {VALUE};
+    protected const string ASSGN = "%s$%s = %s;"; // {TB_SZ}{VARNAME} = {VALUE};
 
 
+    protected const int TB_SZ = 4;
+
+    public int $lvl = 0 {
+        get {
+            return $this->lvl;
+        }
+        set(int $val) {
+            $this->lvl = $val;
+        }
+    }
+
+    public function incLvl(): self
+    {
+      ++$this->lvl;
+      return $this;
+    }
+
+    public function decLvl(): self
+    {
+      if($this->lvl >0) ++$this->lvl;
+      return $this;
+    }
+
+    public function assgn($var, $val): string
+    {
+      $TB_SZ = str_repeat(' ', $this->lvl * self::TB_SZ);
+      return sprintf(self::ASSGN, $TB_SZ, $var, $val); // {TB_SZ}{VARNAME} = {VALUE};
+    }
 
 }
 
